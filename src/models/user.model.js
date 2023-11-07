@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+
+
+//modelo basico de usuario
 const userSchema = new mongoose.Schema({
 
     username: {

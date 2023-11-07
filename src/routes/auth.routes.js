@@ -2,7 +2,7 @@ import { Router } from "express";
 import {login, logout, register} from "../controllers/auth.controllers.js"
 
 const router = Router();
-
+//Rutas de acceso backend
 router.post('/register', register)
 router.post('/login', login)
 router.post('/logout', logout)
