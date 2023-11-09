@@ -13,21 +13,22 @@ function RegisterPage() {
   });
   
 
-  //Falta terminar la validacion del backend y solucionar CORS
+
   return (
-    <section className="bg-zinc-700 max-w-md p-10 rounded-md">
+    <section className="flex h-[calc(100vh-100px)] items-center justify-center ">
+      <div className="bg-zinc-700 rounded-md max-w-md p-10">
       <form onSubmit={submit}>
         <input
           type="text"
           placeholder="Nombre"
           {...register("username", { required: true })}
-          className="bg-zinc-500 text-white px-4 rounded-md py-2 my-2 w-full"
+          className="bg-zinc-500 text-white px-4 rounded-md py-2 my-2 w-full  "
         />
         <input
           type="email"
           placeholder="E-mail"
           {...register("email", { required: true })}
-          className="bg-zinc-500 text-white px-4 rounded-md py-2 my-2 w-full"
+          className="bg-zinc-500 text-white px-4 rounded-md py-2 my-2 w-full "
         />
         <input
           type="password"
@@ -42,6 +43,7 @@ function RegisterPage() {
           Register
         </button>
       </form>
+      </div>
     </section>
   );
 }
