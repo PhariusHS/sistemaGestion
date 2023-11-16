@@ -5,6 +5,13 @@ import LoginPage from './pages/LoginPage'
 import Home from './pages/Home'
 import { AuthProvider } from './context/AuthContext';
 import {ProtectedRoute} from './protectedRoutes'
+import Navbar from './components/navbar';
+import Pedidos from './pages/Pedidos'
+import PedidosListos from './pages/PedidosListos'
+import PedidosPendientes from './pages/PedidosPendientes'
+
+import PlacasListas from './pages/PlacasListas'
+import PlacasPendientes from './pages/PlacasPendientes'
 
 function App() {
 
@@ -12,23 +19,24 @@ function App() {
 
     <AuthProvider>
     <BrowserRouter>
-          <Routes>
-                
+    <Navbar/>
+          <Routes>      
                 <Route path='/login' element={<LoginPage/>}></Route>
                 <Route path='/register' element={<RegisterPage/>}></Route>
                 <Route element = {<ProtectedRoute/>}>
                   <Route path='/home' element={<Home/>}></Route>
-                  <Route path='/pedidos' element={<></>}></Route>
-                  <Route path='/pedidos-listos' element={<></>}></Route>
-                  <Route path='/pedidos-pendientes' element={<></>}></Route>
-                  <Route path='/placas-listas' element={<></>}></Route>
-                  <Route path='/placas-pendientes' element={<></>}></Route>
-                  <Route path='/usuarios' element={<></>}></Route>
-                </Route>                
+                  <Route path='/pedidos' element={<Pedidos/>}></Route>
+                  <Route path='/pedidos-listos' element={<PedidosListos/>}></Route>
+                  <Route path='/pedidos-pendientes' element={<PedidosPendientes/>}></Route>
+                  <Route path='/placas-listas' element={<PlacasListas/>}></Route>
+                  <Route path='/placas-pendientes' element={<PlacasPendientes/>}></Route>
+                  <Route path='/usuarios' element={<></>}></Route></Route>                
           </Routes>
+          <Routes>
+            </Routes> 
     </BrowserRouter>
     </AuthProvider>
-
+    
   )
 }
 
