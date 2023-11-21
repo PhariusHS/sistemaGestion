@@ -11,12 +11,13 @@ export const getPlacas = async (req, res) => {
 
 export const createPlaca = async (req, res) => {
     try {
-        const { color, ancho, largo, alto } = req.body;
+        const { color, ancho, largo, alto, date } = req.body;
         const newPlaca = new Placa({
-          title,
-          description,
+          color,
+          ancho,
+          largo,
+          alto,
           date,
-          user: req.user.id,
         });
         await newPlaca.save();
         res.json(newPlaca);
