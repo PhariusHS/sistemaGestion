@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    screens:{
+      sm:'640px'
+    }, 
+    extend: {
+      gridTemplateColumns: {
+        NavBar: 'repeat(4, minmax(100px, 1fr))',
+      }
+    },
   },
   plugins: [],
 }
