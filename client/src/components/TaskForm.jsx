@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Modal } from "@mui/material";
+import { usePedido } from "../context/PedidosContext";
 
 function TaskForm() {
   const { register, handleSubmit } = useForm();
+
+
+  const {pedidos, createPedido} = usePedido();
+  console.log(createPedido())
+
+
   const [open, setOpen] = useState(false);
 
   const modalOpen = () => {

@@ -1,41 +1,32 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import RegisterPage from './pages/RegisterPage'
-import LoginPage from './pages/LoginPage'
-import { AuthProvider } from './context/AuthContext';
-import {ProtectedRoute} from './protectedRoutes'
-import Navbar from './components/navbar';
-import Pedidos from './pages/Pedidos'
-import PedidosListos from './pages/PedidosListos'
-import PedidosPendientes from './pages/PedidosPendientes'
-import PlacasListas from './pages/PlacasListas'
-import PlacasPendientes from './pages/PlacasPendientes'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
+import { ProtectedRoute } from "./protectedRoutes";
+import Navbar from "./components/navbar";
+import Pedidos from "./pages/Pedidos";
+import Placas from './pages/Placas'
+import { PedidosProvider } from "./context/PedidosContext";
 
 function App() {
-
   return (
-
     <AuthProvider>
-    <BrowserRouter>
-
-    <Navbar/>
-          <Routes>      
-                <Route path='/login' element={<LoginPage/>}></Route>
-                <Route path='/register' element={<RegisterPage/>}></Route>
-                <Route element = {<ProtectedRoute/>}>
-                  <Route path='/home' element={<></>}></Route>
-                  <Route path='/pedidos' element={<Pedidos/>}></Route>
-                  <Route path='/pedidos-listos' element={<PedidosListos/>}></Route>
-                  <Route path='/pedidos-pendientes' element={<PedidosPendientes/>}></Route>
-                  <Route path='/placas-listas' element={<PlacasListas/>}></Route>
-                  <Route path='/placas-pendientes' element={<PlacasPendientes/>}></Route>
-                  <Route path='/usuarios' element={<></>}></Route></Route>                
-
+      <PedidosProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/register" element={<RegisterPage />}></Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/pedidos" element={<Pedidos />}></Route>
+              <Route path="/placas" element={<Placas />}></Route>
+              <Route path="/usuarios" element={<></>}></Route>
+            </Route>
           </Routes>
-
-    </BrowserRouter>
+        </BrowserRouter>
+      </PedidosProvider>
     </AuthProvider>
-    
-  )
+  );
 }
 
-export default App
+export default App;

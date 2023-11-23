@@ -8,7 +8,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/pedidos");
+    if (isAuthenticated) navigate("/pedidos-listos");
   }, [isAuthenticated]);
 
   const submit = handleSubmit(async (values) => {
