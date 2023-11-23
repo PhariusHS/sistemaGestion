@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+
 function LoginPage() {
   const {
     register,
@@ -8,7 +10,13 @@ function LoginPage() {
     formState: { errors },
   } = useForm();
 
-  const {signin, errors: signinErrors} = useAuth();
+  const { signin, errors: signinErrors, isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/pedidos-listos");
+  }, [isAuthenticated]);
 
   const onSubmit = handleSubmit((data) => {
     signin(data);
@@ -16,11 +24,11 @@ function LoginPage() {
   return (
     <section className="flex h-[calc(100vh-100px)] items-center justify-center ">
       <div className="bg-zinc-700 rounded-md max-w-md p-10">
-
-      {signinErrors.map((error, i) => (
-             <div className="bg-red-500 text-white text-center" key={i}>{error}</div>
-        ))    
-        }
+        {signinErrors.map((error, i) => (
+          <div className="bg-red-500 text-white text-center" key={i}>
+            {error}
+          </div>
+        ))}
         <h1 className="text-2xl font-bold">Ingreso</h1>
 
         <form onSubmit={onSubmit}>
@@ -50,7 +58,12 @@ function LoginPage() {
           </button>
         </form>
 
-        <p className="flex gap-x-2 justify-between">¿No tenes cuenta?    <Link to="/register" className=" text-sky-500">Registrarse</Link></p>
+        <p className="flex gap-x-2 justify-between">
+          ¿No tenes cuenta?{" "}
+          <Link to="/register" className=" text-sky-500">
+            Registrarse
+          </Link>
+        </p>
       </div>
     </section>
   );
