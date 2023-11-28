@@ -2,7 +2,7 @@ import {Router} from 'express'
 import {authRequired} from '../middleware/validateToken.js'
 import {getPlaca, getPlacas, createPlaca, updatePlaca, deletePlaca} from '../controllers/placa.controller.js'
 import {validateSchema} from '../middleware/validator.middleware.js'
-import {createPlacaSchema} from '../schema/placa.schena.js'
+import {createPlacaSchema} from '../schema/placa.schema.js'
 
 const router = Router()
 
