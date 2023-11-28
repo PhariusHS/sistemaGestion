@@ -10,7 +10,7 @@ export default {
     }, 
     extend: {
       gridTemplateColumns: {
-        NavBar: 'repeat(4, minmax(100px, 1fr))',
+        NavBar: 'repeat(4, minmax(50%, 1fr))',
       }
     },
   },
