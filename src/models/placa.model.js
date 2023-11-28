@@ -26,6 +26,10 @@ const placaSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    estado: {
+      type: String,
+      required: true,
+    },
     date: {
       type: Date,
       default: Date.now,

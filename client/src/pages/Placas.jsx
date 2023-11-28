@@ -3,7 +3,7 @@ import PedidosGrid from '../components/PedidosGrid'
 
 function Placas() {
   return (
-    <PedidosGrid/>
+    <div>ASDAS</div>
   )
 }
 

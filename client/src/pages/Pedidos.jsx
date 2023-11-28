@@ -1,8 +1,14 @@
 import React from 'react'
+import PedidosGrid from '../components/PedidosGrid'
+import PedidosForm from '../components/PedidosForm'
 
 function pedidos() {
   return (
-    <div>pedidos</div>
+    <div>
+      <PedidosGrid/>
+      <PedidosForm/>
+  
+    </div>
   )
 }
 
