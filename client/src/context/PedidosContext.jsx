@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import {createPedidosRequest} from '../api/pedidos'
 
 const PedidoContext = createContext();
 
@@ -15,9 +16,10 @@ export const usePedido = () => {
 export function PedidosProvider({children}) {
   const [pedidos, setPedidos] = useState([]);
 
-  const createPedido = async(pedido) =>{
+  const createPedido = async (pedido) =>{
 
-    console.log(pedido)
+    const res =  await createPedidosRequest(pedido)
+    console.log(res)
 
   }
 

@@ -7,8 +7,8 @@ function TaskForm() {
   const { register, handleSubmit } = useForm();
 
 
-  const {pedidos, createPedido} = usePedido();
-  console.log(createPedido())
+  const {createPedido} = usePedido();
+
 
 
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ function TaskForm() {
   };
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    createPedido(data)
   })
 
   

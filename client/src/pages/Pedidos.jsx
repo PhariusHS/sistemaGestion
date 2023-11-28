@@ -1,8 +1,12 @@
 import React from 'react'
+import TaskForm from '../components/TaskForm'
 
 function pedidos() {
   return (
-    <div>pedidos</div>
+    <div>
+
+      <TaskForm/>
+    </div>
   )
 }
 

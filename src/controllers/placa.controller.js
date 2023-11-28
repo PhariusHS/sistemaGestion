@@ -11,12 +11,14 @@ export const getPlacas = async (req, res) => {
 
 export const createPlaca = async (req, res) => {
     try {
-        const { color, ancho, largo, alto, date } = req.body;
+        const { color, ancho, largo, alto, densidad, masa, date } = req.body;
         const newPlaca = new Placa({
           color,
           ancho,
           largo,
           alto,
+          densidad,
+          masa,
           date,
         });
         await newPlaca.save();
@@ -51,10 +53,10 @@ export const deletePlaca  = async (req, res) => {
 
 export const updatePlaca = async (req, res) => {
     try {
-        const { color, ancho, largo, alto } = req.body;
+        const { color, ancho, largo, alto, densidad, masa, date } = req.body;
         const PlacaUpdated = await Placa.findOneAndUpdate(
           { _id: req.params.id },
-          { color, ancho, largo, alto },
+          { color, ancho, largo, alto, densidad, masa, date },
           { new: true }
         );
         return res.json(PlacaUpdated);
