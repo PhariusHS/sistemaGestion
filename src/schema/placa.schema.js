@@ -12,6 +12,12 @@ export const createPlacaSchema = z.object({
   }),
   alto: z.string({
     required_error: "se requieren todas las medidas",
+  }),
+  densidad: z.string({
+    required_error: "La placa necesita densidad"
+  }),
+  masa: z.string({
+    required_error: "La placa necesita masa"
   }),  
   estado: z.string({
     required_error: "La placa necesita un estado"

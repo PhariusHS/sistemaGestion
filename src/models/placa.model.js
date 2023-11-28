@@ -18,6 +18,14 @@ const placaSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    densidad: {
+      type: String,
+      required: true,
+    },
+    masa: {
+      type: String,
+      required: true,
+    },
     date: {
       type: Date,
       default: Date.now,
