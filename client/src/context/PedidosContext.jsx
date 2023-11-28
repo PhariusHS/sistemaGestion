@@ -17,7 +17,6 @@ export function PedidosProvider({children}) {
   const [pedidos, setPedidos] = useState([]);
 
   const createPedido = async (pedido) =>{
-
     const res =  await createPedidosRequest(pedido)
     console.log(res)
 

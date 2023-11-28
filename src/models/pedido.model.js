@@ -10,10 +10,6 @@ const pedidoSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    placas: {
-      type: Array,
-      required: true,
-    },
     date: {
       type: Date,
       default: Date.now,

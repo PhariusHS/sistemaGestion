@@ -15,7 +15,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/pedidos-listos");
+    if (isAuthenticated) navigate("/pedidos");
   }, [isAuthenticated]);
 
   const onSubmit = handleSubmit((data) => {
