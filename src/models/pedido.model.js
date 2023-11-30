@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { boolean } from "zod";
+
 
 const pedidoSchema = new mongoose.Schema(
   {

@@ -8,9 +8,8 @@ function PedidosForm() {
   const { register, handleSubmit } = useForm();
 
   const { createPedido } = usePedido();
-
   const [open, setOpen] = useState(false);
-
+  const checked = false
   const modalOpen = () => {
     setOpen(true);
   };
@@ -21,7 +20,9 @@ function PedidosForm() {
   const onSubmit = handleSubmit((data) => {
     createPedido(data);
     modalClose()
+    
   });
+
 
   return (
     <div>
@@ -43,8 +44,10 @@ function PedidosForm() {
             <input type="text" name="" id="" placeholder="cliente" {...register("cliente")}/>
 
             <input type="text" placeholder="RESPONSABLE" {...register("responsable")}/>
+            
+           <input type="hidden" {...register("terminado", {value: checked})} />
 
-            <button className="bg-slate-400 rounded-lg px-4 py-2 my-2" >
+            <button type="submit" className="bg-slate-400 rounded-lg px-4 py-2 my-2" >
               SAVE
             </button>
           </form>

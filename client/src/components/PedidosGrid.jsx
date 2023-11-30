@@ -37,7 +37,7 @@ function PedidosGrid() {
           <div className="grid grid-cols-3 gap-4 justify-center">
             <button
               onClick={() => handleButtons(3)}
-              className="whitespace-nowrap bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="whitespace-nowrap bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center"
               type="button"
             >
               Pendientes
@@ -96,8 +96,9 @@ function PedidosGrid() {
               
             </div>
           </div>
-          <div className=" grid justify-center">
+          <div className=" flex flex-row gap-5 justify-center">
             <PedidosForm />
+            <form className=" flex flex-row gap-5 justify-center"><button type="submit">R</button></form>
           </div>
         </div>
       </div>
