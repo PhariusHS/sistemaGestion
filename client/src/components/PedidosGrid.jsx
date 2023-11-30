@@ -6,7 +6,7 @@ import PedidosPendientes from "./pedidos/PedidosPendientes";
 import PedidosForm from "../components/PedidosForm";
 import Pedido from "./pedidos/Pedido";
 import { usePedido } from "../context/PedidosContext";
-import { map } from "zod";
+
 
 function PedidosGrid() {
   const { getPedidos, pedidos } = usePedido();
@@ -23,15 +23,6 @@ function PedidosGrid() {
     getPedidos();
   }, []);
 
-  const componentizar = () => {
-    if (componente == 2) {
-      return;
-    } else if (componente == 3) {
-      return;
-    }
-
-    return;
-  };
 
   return (
     <>
