@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const signup = async (user) => {
     try {
@@ -34,29 +34,31 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(user);
       console.log(res);
-      setIsAuthenticated(true)
-      setUser(res.data)
+      setIsAuthenticated(true);
+      setUser(res.data);
     } catch (error) {
-      if (Array.isArray(error.response.data)){
-        return  setErrors(error.response.data);
+      if (Array.isArray(error.response.data)) {
+        return setErrors(error.response.data);
       }
-      setErrors([error.response.data])
-     
-
-
+      setErrors([error.response.data]);
     }
   };
 
-  useEffect(() =>{
-    if(errors.length>0){
-    const timer =  setTimeout(()=>{
-        setErrors([])
-      }, 10000)
+  const logout = () => {
+    Cookies.remove("token");
+    setUser(null);
+    setIsAuthenticated(false);
+  };
 
-      return () => clearTimeout(timer)
+  useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 10000);
+
+      return () => clearTimeout(timer);
     }
-
-  }, [errors])
+  }, [errors]);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -69,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
       try {
         const res = await verifyTokenRequest(cookies.token);
-    
+
         if (!res.data) return setIsAuthenticated(false);
         setIsAuthenticated(true);
         setUser(res.data);
@@ -82,7 +84,6 @@ export const AuthProvider = ({ children }) => {
     checkLogin();
   }, []);
 
-  
   return (
     <AuthContext.Provider
       value={{
@@ -91,6 +92,7 @@ export const AuthProvider = ({ children }) => {
         loading,
         user,
         isAuthenticated,
+        logout,
         errors,
       }}
     >
