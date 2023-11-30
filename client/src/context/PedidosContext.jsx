@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {createPedidosRequest} from '../api/pedidos'
+import { createPedidosRequest, getPedidosRequest } from "../api/pedidos";
 
 const PedidoContext = createContext();
 
@@ -13,21 +13,29 @@ export const usePedido = () => {
   return context;
 };
 
-export function PedidosProvider({children}) {
+export function PedidosProvider({ children }) {
   const [pedidos, setPedidos] = useState([]);
 
-  const createPedido = async (pedido) =>{
-    const res =  await createPedidosRequest(pedido)
-    console.log(res)
+  const getPedidos = async () => {
+    try {
+      const res = await getPedidosRequest();
+      setPedidos(res.data);
+    } catch {
+      console.error(error);
+    }
+  };
 
-  }
+  const createPedido = async (pedido) => {
+    const res = await createPedidosRequest(pedido);
+    console.log(res);
+  };
 
   return (
     <PedidoContext.Provider
       value={{
         pedidos,
         createPedido,
-        
+        getPedidos,
       }}
     >
       {children}
