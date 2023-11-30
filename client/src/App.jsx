@@ -3,7 +3,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./protectedRoutes";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Pedidos from "./pages/Pedidos";
 import Placas from './pages/Placas'
 import { PedidosProvider } from "./context/PedidosContext";
