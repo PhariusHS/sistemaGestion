@@ -2,7 +2,9 @@ import pedido from '../models/pedido.model.js'
 
 export const getPedidos = async (req, res) => {
     try {
-        const pedidos = await pedido.find
+        const pedidos = await pedido.find({
+          
+        });
         res.json(pedidos);
       } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -11,10 +13,11 @@ export const getPedidos = async (req, res) => {
 
 export const createPedido = async (req, res) => {
     try {
-        const { cliente, responsable, date } = req.body;
+        const { cliente, responsable, terminado, date } = req.body;
         const newpedido = new pedido({
           cliente,
           responsable,
+          terminado,
           date,
         });
         await newpedido.save();
@@ -49,10 +52,10 @@ export const deletePedido  = async (req, res) => {
 
 export const updatePedido = async (req, res) => {
     try {
-        const { cliente, responsable, date } = req.body;
+        const { cliente, responsable, terminado, date } = req.body;
         const pedidoUpdated = await pedido.findOneAndUpdate(
           { _id: req.params.id },
-          { cliente, responsable, date },
+          { cliente, responsable, terminado, date },
           { new: true }
         );
         return res.json(pedidoUpdated);

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { boolean } from "zod";
 
 const pedidoSchema = new mongoose.Schema(
   {
@@ -8,6 +9,10 @@ const pedidoSchema = new mongoose.Schema(
     },
     responsable: {
       type: String,
+      required: true,
+    },
+    terminado:{
+      type:Boolean,
       required: true,
     },
     date: {
