@@ -13,7 +13,7 @@ export function Navbar() {
         <img src={imagenes.img1} className="w-48 h-20 mr-2" alt="Logo Tresol" />
       </Link>
     </h1>
-  <ul className="flex justify-center">
+  <ul className="flex justify-center flex-col sm:flex-row">
     {isAuthenticated ? (
       <>
         <li className="flex justify-center mb-2 mx-auto ">
