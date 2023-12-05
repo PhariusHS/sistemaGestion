@@ -2,14 +2,14 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import { usePedido } from "../context/PedidosContext";
-import PlacasForm from '../components/PlacasForm'
+import PlacasForm from "../components/PlacasForm";
 
 function PedidosForm() {
   const { register, handleSubmit } = useForm();
 
   const { createPedido } = usePedido();
   const [open, setOpen] = useState(false);
-  const checked = false
+  const checked = false;
   const modalOpen = () => {
     setOpen(true);
   };
@@ -19,10 +19,8 @@ function PedidosForm() {
 
   const onSubmit = handleSubmit((data) => {
     createPedido(data);
-    modalClose()
-    
+    modalClose();
   });
-
 
   return (
     <div>
@@ -41,17 +39,33 @@ function PedidosForm() {
         <div className="bg-slate-100 m-8 p-12">
           <form onSubmit={onSubmit}>
             <h1>PEDIDO {}</h1>
-            <input type="text" name="" id="" placeholder="cliente" {...register("cliente")}/>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="cliente"
+              {...register("cliente")}
+            />
 
-            <input type="text" placeholder="RESPONSABLE" {...register("responsable")}/>
-            
-           <input type="hidden" {...register("terminado", {value: checked})} />
+            <input
+              type="text"
+              placeholder="RESPONSABLE"
+              {...register("responsable")}
+            />
 
-            <button type="submit" className="bg-slate-400 rounded-lg px-4 py-2 my-2" >
+            <input
+              type="hidden"
+              {...register("terminado", { value: checked })}
+            />
+
+            <button
+              type="submit"
+              className="bg-slate-400 rounded-lg px-4 py-2 my-2"
+            >
               SAVE
             </button>
           </form>
-          <PlacasForm/>
+          <PlacasForm />
         </div>
       </Modal>
     </div>

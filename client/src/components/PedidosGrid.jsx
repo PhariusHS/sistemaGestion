@@ -7,7 +7,6 @@ import PedidosForm from "../components/PedidosForm";
 import Pedido from "./pedidos/Pedido";
 import { usePedido } from "../context/PedidosContext";
 
-
 function PedidosGrid() {
   const { getPedidos, pedidos } = usePedido();
   const listaPedidos = <ListaPedidos />;
@@ -22,7 +21,6 @@ function PedidosGrid() {
   useEffect(() => {
     getPedidos();
   }, []);
-
 
   return (
     <>
@@ -66,9 +64,10 @@ function PedidosGrid() {
                     key={pedido._id}
                     id={pedidos.indexOf(pedido)}
                     cliente={pedido.cliente}
+                    delId={pedido._id}
                   />
                 ))}
-              
+
               {componente === 2 &&
                 pedidos.map((pedido) => {
                   if (pedido.terminado) {
@@ -77,6 +76,7 @@ function PedidosGrid() {
                         key={pedido._id}
                         id={pedidos.indexOf(pedido)}
                         cliente={pedido.cliente}
+                        delId={pedido._id}
                       />
                     );
                   }
@@ -89,16 +89,18 @@ function PedidosGrid() {
                         key={pedido._id}
                         id={pedidos.indexOf(pedido)}
                         cliente={pedido.cliente}
+                        delId={pedido._id}
                       />
                     );
                   }
                 })}
-              
             </div>
           </div>
           <div className=" flex flex-row gap-5 justify-center">
             <PedidosForm />
-            <form className=" flex flex-row gap-5 justify-center"><button type="submit">R</button></form>
+            <form className=" flex flex-row gap-5 justify-center">
+              <button type="submit">R</button>
+            </form>
           </div>
         </div>
       </div>
