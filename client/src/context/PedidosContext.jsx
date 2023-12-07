@@ -4,6 +4,7 @@ import {
   getPedidosRequest,
   deletePedidosRequest,
   updatePedidosRequest,
+  getPedidoRequest,
 } from "../api/pedidos";
 
 const PedidoContext = createContext();
@@ -26,6 +27,14 @@ export function PedidosProvider({ children }) {
       const res = await getPedidosRequest();
       setPedidos(res.data);
     } catch {
+      console.error(error);
+    }
+  };
+  const getPedido = async (id) => {
+    try {
+      const res = await getPedidoRequest(id);
+      return res.data;
+    } catch (error) {
       console.error(error);
     }
   };
@@ -59,6 +68,7 @@ export function PedidosProvider({ children }) {
         pedidos,
         createPedido,
         getPedidos,
+        getPedido,
         deletePedido,
         updatePedido,
       }}
