@@ -1,10 +1,11 @@
 import React from 'react'
-import PedidosGrid from '../components/PedidosGrid'
-
+import PlacasGrid from '../components/PlacasGrid'
 
 function Placas() {
   return (
-      <div>ASDASDAS</div>
+    <div>
+      <PlacasGrid/>
+    </div>
   )
 }
 

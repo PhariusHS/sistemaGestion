@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {createPlacasRequest} from '../api/placas'
+import {createPlacasRequest, getPlacasRequest, deletePlacasRequest, updatePlacasRequest} from '../api/placas'
 
 const PlacaContext = createContext();
 
@@ -15,17 +15,49 @@ export const usePlaca = () => {
 
   export function PlacasProvider({children}) {
     const [placas, setPlacas] = useState([]);
+
+    const getPlacas = async () => {
+      try {
+        const res = await getPlacasRequest();
+        setPlacas(res.data);
+      } catch {
+        console.error(error);
+      }
+    };
   
     const createPlaca = async (placa) =>{
       const res =  await createPlacasRequest(placa)
       console.log(res)
   
     }  
+
+    const deletePlaca = async (id) => {
+      try {
+        const res = await deletePlacasRequest(id);
+        if (res.status === 204)
+          setPlacas(placas.filter((placa) => placa._id !== id));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    const updatePlaca = async (id, placa) => {
+      try {
+        await updatePlacasRequest(id, placa);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return (
         <PlacaContext.Provider
           value={{
             placas,
             createPlaca,
+            getPlacas,
+            deletePlaca,
+            updatePlaca
+
             
           }}
         >

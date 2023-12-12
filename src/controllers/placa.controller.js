@@ -2,7 +2,9 @@ import Placa from "../models/placa.model.js";
 
 export const getPlacas = async (req, res) => {
   try {
-    const placas = await Placa.find;
+    const placas = await Placa.find({
+          
+    });
     res.json(placas);
   } catch (error) {
     return res.status(500).json({ message: error.message });
