@@ -39,7 +39,7 @@ function PedidosForm() {
       } else {
         createPedido(data);
         modalClose();
-        navigate("/pedidos")
+        window.location.reload()
       }
     } catch (error) {
       console.log(error);
