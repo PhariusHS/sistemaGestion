@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "@mui/material";
 import { usePedido } from "../context/PedidosContext";
 import PlacasForm from "../components/PlacasForm";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate , useParams } from "react-router-dom";
 
 function PedidosForm() {
   const {
@@ -16,6 +16,7 @@ function PedidosForm() {
   const { createPedido, updatePedido, getPedido } = usePedido();
   const [open, setOpen] = useState(false);
   const checked = false;
+  const navigate = useNavigate();
   const modalOpen = () => {
     setOpen(true);
   };
@@ -33,9 +34,12 @@ function PedidosForm() {
     try {
       if (params.id) {
         updatePedido(idP, data);
+        modalClose();
+        navigate("/pedidos")
       } else {
         createPedido(data);
         modalClose();
+        navigate("/pedidos")
       }
     } catch (error) {
       console.log(error);
