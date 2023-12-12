@@ -8,6 +8,7 @@ import Pedidos from "./pages/Pedidos";
 import Placas from './pages/Placas'
 import { PedidosProvider } from "./context/PedidosContext";
 import { PlacasProvider } from "./context/PlacasContext";
+import PedidosForm from "./components/PedidosForm";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />}></Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/pedidos" element={<Pedidos />}></Route>
+              <Route path="/pedidos/:id" element={<PedidosForm />}></Route>
               <Route path="/placas" element={<Placas />}></Route>
               <Route path="/usuarios" element={<></>}></Route>
             </Route>
